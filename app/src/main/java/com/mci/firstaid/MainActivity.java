@@ -48,11 +48,11 @@ public class MainActivity extends AppCompatActivity {
             };
 
     @Override
-    protected void onPause() {
+    protected void onStop() {
         Intent intent = new Intent(this, AlertReceiver.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 1, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         AlarmManager alarmManager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
         alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis()+1000, pendingIntent);
-        super.onPause();
+        super.onStop();
     }
 }

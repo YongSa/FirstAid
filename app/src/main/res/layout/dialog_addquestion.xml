@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:id="@+id/addQuestionDialog">
+
+    <Spinner
+        android:id="@+id/categories"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:entries="@array/categories_array" />
+
+    <EditText
+        android:id="@+id/addQuestionEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Frage"
+        android:layout_below="@id/categories" />
+
+    <EditText
+        android:id="@+id/addQuestionAnswerA"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Antwort A"
+        android:layout_below="@id/addQuestionEdit" />
+
+    <EditText
+        android:id="@+id/addQuestionAnswerB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Antwort B"
+        android:layout_below="@id/addQuestionAnswerA" />
+
+    <EditText
+        android:id="@+id/addQuestionAnswerC"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Antwort C"
+        android:layout_below="@id/addQuestionAnswerB" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="10dp"
+        android:text="Welche Antwort ist korrekt?"
+        android:layout_below="@id/addQuestionAnswerC" />
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textView"
+        android:checkedButton="@id/radioA">
+
+        <RadioButton
+            android:id="@+id/radioA"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="A" />
+
+        <RadioButton
+            android:id="@+id/radioB"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="B" />
+
+        <RadioButton
+            android:id="@+id/radioC"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="C" />
+
+    </RadioGroup>
+
+</RelativeLayout>

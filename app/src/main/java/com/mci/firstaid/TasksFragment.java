@@ -15,6 +15,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import java.util.zip.Inflater;
+
 import static android.app.Activity.RESULT_OK;
 import static android.content.Context.MODE_PRIVATE;
 
@@ -30,12 +32,20 @@ public class TasksFragment extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull final LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View view  = inflater.inflate(R.layout.fragment_tasks, container, false);
         ImageButton materialButton = (ImageButton) view.findViewById(R.id.taskMaterial);
         ImageButton trafficButton = (ImageButton) view.findViewById(R.id.taskTraffic);
         textViewHighscore = view.findViewById(R.id.textViewHighscore);
         loadHighscore();
+        materialButton.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Fragment frag = new WikiFragment();
+                getFragmentManager().beginTransaction().replace(R.id.fragments, frag).commit();
+                return true;
+            }
+        });
         materialButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

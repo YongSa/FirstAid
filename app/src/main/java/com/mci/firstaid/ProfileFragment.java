@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,13 +16,25 @@ public class ProfileFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View view  = inflater.inflate(R.layout.fragment_profile, container, false);
-        ImageButton addQuestionButton = (ImageButton) view.findViewById(R.id.addQuestionButton);
+        Button addQuestionButton = (Button) view.findViewById(R.id.addQuestionButton);
+        Button resetAccount = (Button) view.findViewById(R.id.resetAccount);
         addQuestionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                QuizDbHelper.getInstance(getContext()).addQuestion(new Question("G doesn't exist", "D does exist", "What's D?", "D doesn't exist", 3));
+                openDialog();
+            }
+        });
+        resetAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                QuizDbHelper.getInstance(getContext()).resetDatabase();
             }
         });
         return view;
+    }
+
+    private void openDialog() {
+        AddQuestionDialog dialog = new AddQuestionDialog();
+        dialog.show(getFragmentManager(), "example");
     }
 }

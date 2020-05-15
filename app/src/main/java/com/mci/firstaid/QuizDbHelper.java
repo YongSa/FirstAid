@@ -59,21 +59,29 @@ public class QuizDbHelper extends SQLiteOpenHelper {
         db.setForeignKeyConstraintsEnabled(true);
     }
 
+    public void resetDatabase() {
+        if (db == null || !db.isOpen()) {
+            db = getWritableDatabase();
+        }
+        db.execSQL("DROP TABLE IF EXISTS " + QuestionsTable.TABLE_NAME);
+        onCreate(db);
+    }
+
     private void fillQuestionsTable() {
-        Question q1 = new Question("A is correct", "A", "B", "C", 1);
+        Question q1 = new Question("Welche Antwort zur Wundenversorgung und Blutstillung ist richtg?", "In der Wunde befindliche Fremdkörper müssen entfernt werden, da sonst kein Druckverband angelegt werden kann.", "Wenn es die Zeit erlaubt, ist zum Anlegen des Wundverbandes die Bekleidung nach Möglichkeit zu entfernen, damit die Wunde frei bleibt.", "Blutet ein Druckverband durch, so ist dieser vollständig zu entfernen und durch einen neuen zu ersetzten.", 2);
         addQuestion(q1);
-        Question q2 = new Question("B is correct", "A", "B", "C", 2);
+        Question q2 = new Question("Wer darf ein, nach dem zweiten Druckverband, angelegtes Tourniquet entfernen?", "Ein Sanitätsoffizier Arzt", "Ein Einsatzhelfer A", "Ein Sanitätsfeldwebel und Rettungsassistent", 1);
         addQuestion(q2);
-        Question q3 = new Question("C is correct", "A", "B", "C", 3);
+        Question q3 = new Question("Nach wie vielen MInuten kann bei der Anwendung des Morphin-Autoinjektors ein weiterer Injektor gegeben werden, wenn keine schmerzstillende Wikrung eintritt?", "Nach 15 Minuten", "Nach 60 Minuten", "Nach 30 Minuten", 3);
         addQuestion(q3);
-        Question q4 = new Question("A is correct again", "A", "B", "C", 1);
+        Question q4 = new Question("Bei Anwendung des Autoinjektors: Wessen Autoinjektor ist grundsätzlich zu verwenden?", "Der Autoinjektor der verletzten Person", "Der Autoinjektor der hilfeleistenten Person", "Der Autoinjektor von nicht-verwundeten Kameraden", 1);
         addQuestion(q4);
-        Question q5 = new Question("B is correct again", "A", "B", "C", 2);
+        Question q5 = new Question("Wie viele Anwendungen des Morphin-Autoinjektors können max. pro Tag erfolgen", "2 Anwendungen", "6 Anwendungen", "4 Anwendungen", 2);
         addQuestion(q5);
     }
 
     public void addQuestion(Question question) {
-        if (db == null || db.isOpen()) {
+        if (db == null || !db.isOpen()) {
             db = getWritableDatabase();
         }
         ContentValues cv = new ContentValues();

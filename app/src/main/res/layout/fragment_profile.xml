@@ -5,15 +5,37 @@
     android:id="@+id/profileFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBackground">
+    android:background="@color/colorBackground"
+    android:layout_margin="30dp">
 
-    <ImageButton
-        android:id="@+id/addQuestionButton"
+    <ImageView
+        android:id="@+id/profilePic"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:backgroundTint="@color/colorBackground"
-        android:tint="@color/colorHeader"
-        app:srcCompat="@drawable/ic_add_circle_black_24dp" />
+        android:layout_height="105dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
+        app:srcCompat="@drawable/ic_account_circle_black_24dp" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/profilePic">
+        <Button
+            android:id="@+id/resetAccount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/colorHeader"
+            android:text="Account zurücksetzen" />
+
+        <Button
+            android:id="@+id/addQuestionButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/colorHeader"
+            android:text="Frage hinzufügen"
+            android:drawableLeft="@drawable/ic_add_circle_black_24dp" />
+    </LinearLayout>
 </RelativeLayout>
